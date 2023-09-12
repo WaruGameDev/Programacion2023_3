@@ -18,17 +18,24 @@ public class DialogueManager : MonoBehaviour
     public Image portraitImage;
     public List<Dialogue> dialogues;
     public int indexDialogue = 0;
-
+    public CanvasGroup cg;
+    public bool isTalking;
     private void Awake()
     {
         instance = this;
     }
     private void Start()
     {
-        ShowDialogue(dialogues[indexDialogue]);
+        cg.alpha = 0;
+        cg.blocksRaycasts = false;
+        cg.interactable = false;
+        
     }
     public void ShowDialogue(Dialogue dialogue)
     {
+        cg.alpha = 1;
+        cg.blocksRaycasts = true;
+        cg.interactable = true;
         nameCharacterText.text = dialogue.nameCharacter;
         dialogueCharacterText.text = dialogue.dialogueCharacter;
         portraitImage.sprite = dialogue.portrait;
@@ -38,12 +45,21 @@ public class DialogueManager : MonoBehaviour
         indexDialogue++;
         if(indexDialogue >= dialogues.Count)
         {
-            return;
+            cg.alpha = 0;
+            cg.blocksRaycasts = false;
+            cg.interactable = false;
+            isTalking = false;
+            indexDialogue = 0;
         }
         else
         {
             ShowDialogue(dialogues[indexDialogue]);
         }
         
+    }
+    public void AddDialogues(List<Dialogue> dialoguesToAdd)
+    {
+        dialogues.Clear();
+        dialogues.AddRange(dialoguesToAdd);
     }
 }
