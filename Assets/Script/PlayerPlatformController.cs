@@ -20,6 +20,8 @@ public class PlayerPlatformController : MonoBehaviour
     public float coyoteTime = .2f;
     private float actualCoyoteTime;
     public bool isCoyoteTime;
+    [Header("Feedback")]
+    public GameObject dustJumpParticle;
 
     private void Start()
     {
@@ -80,9 +82,15 @@ public class PlayerPlatformController : MonoBehaviour
     }
     private void Jump()
     {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        if(!jumping)
+        {
+            GameObject dust = Instantiate(dustJumpParticle, transform.position, Quaternion.identity);
+            Destroy(dust, 2);
+        }
+        
         jumping = true;
         isPrebuff = false;
-        rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += Vector2.up * jumpPlayer;
     }
     private bool IsGrounded(Transform check)
