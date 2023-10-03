@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 [System.Serializable]
 public class Dialogue
 {
     public string nameCharacter;
     public string dialogueCharacter;
     public Sprite portrait;
+    public UnityEvent onShowDialogue;
 }
 
 public class DialogueManager : MonoBehaviour
@@ -39,6 +41,7 @@ public class DialogueManager : MonoBehaviour
         nameCharacterText.text = dialogue.nameCharacter;
         dialogueCharacterText.text = dialogue.dialogueCharacter;
         portraitImage.sprite = dialogue.portrait;
+        dialogue.onShowDialogue?.Invoke();       
     }
     public void NextDialogue()
     {
