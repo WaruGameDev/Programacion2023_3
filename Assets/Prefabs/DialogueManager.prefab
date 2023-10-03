@@ -276,6 +276,8 @@ MonoBehaviour:
     dialogueCharacter: Tengo hambre.
     portrait: {fileID: 21300000, guid: 1a5d0821a68bf0247ad71ca9694f46dc, type: 3}
   indexDialogue: 0
+  cg: {fileID: 8500851711851505358}
+  isTalking: 0
 --- !u!225 &8500851711851505358
 CanvasGroup:
   m_ObjectHideFlags: 0

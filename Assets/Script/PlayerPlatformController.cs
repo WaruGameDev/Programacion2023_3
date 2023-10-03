@@ -38,15 +38,17 @@ public class PlayerPlatformController : MonoBehaviour
         {
             actualPrebuffTime = 0;
         }
+
         if(actualPrebuffTime < prebuffTime)
         {
             isPrebuff = true;
             actualPrebuffTime += 1 * Time.deltaTime;
+            if(actualPrebuffTime >= prebuffTime)
+            {
+                isPrebuff = false;
+            }
         }
-        else
-        {
-            isPrebuff = false;
-        }
+        
         if(actualCoyoteTime < coyoteTime)
         {
             isCoyoteTime = true;
@@ -54,13 +56,9 @@ public class PlayerPlatformController : MonoBehaviour
             if(actualCoyoteTime >= coyoteTime)
             {
                 jumping = true;
+                isCoyoteTime = false;
             }
-        }
-        else
-        {
-            isCoyoteTime = false;
-        }
-        
+        }        
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(x * speedPlayer, rb.velocity.y);
         if(rb.velocity.y < 0)
@@ -77,11 +75,15 @@ public class PlayerPlatformController : MonoBehaviour
         }
         if(isPrebuff && (isGround|| isCoyoteTime))
         {
-            jumping = true;
-            actualPrebuffTime = prebuffTime;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity += Vector2.up * jumpPlayer;
+            Jump();
         }
+    }
+    private void Jump()
+    {
+        jumping = true;
+        isPrebuff = false;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity += Vector2.up * jumpPlayer;
     }
     private bool IsGrounded(Transform check)
     {

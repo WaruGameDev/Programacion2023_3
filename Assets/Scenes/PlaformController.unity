@@ -462,7 +462,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b8b6cb1b7c32a33489421615abc998bb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -877,6 +877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1532230167873299583, guid: 007b239b9aebbd64db27b08969cacbff, type: 3}
+      propertyPath: cg
+      value: 
+      objectReference: {fileID: 1322901629}
     - target: {fileID: 8500851711851505358, guid: 007b239b9aebbd64db27b08969cacbff, type: 3}
       propertyPath: m_Alpha
       value: 1
@@ -886,6 +890,11 @@ PrefabInstance:
 --- !u!224 &1322901627 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1532230167873299580, guid: 007b239b9aebbd64db27b08969cacbff, type: 3}
+  m_PrefabInstance: {fileID: 1322901626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1322901629 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8500851711851505358, guid: 007b239b9aebbd64db27b08969cacbff, type: 3}
   m_PrefabInstance: {fileID: 1322901626}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363066996
