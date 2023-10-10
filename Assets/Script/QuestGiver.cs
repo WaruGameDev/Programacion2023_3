@@ -8,10 +8,29 @@ public class QuestGiver : MonoBehaviour
     
     public void GiveQuest()
     {
-        QuestManager.instance.AddQuest(questToGive);
+        if(QuestManager.instance.GetQuestStatus(questToGive.nameQuest) 
+            == QUEST_STATUS.UNASSIGNED)
+        {
+            QuestManager.instance.AddQuest(questToGive);
+        }
+        if(questToGive.statusQuest == QUEST_STATUS.COMPLETE)
+        {
+            QuestManager.instance.
+                ChangeQuestStatus(questToGive.nameQuest, QUEST_STATUS.COMPLETE);
+        }
+        
     }
     public void GiveQuest(string newQuest)
     {
-        QuestManager.instance.AddQuest(newQuest);
+        if (QuestManager.instance.GetQuestStatus(questToGive.nameQuest)
+            == QUEST_STATUS.UNASSIGNED)
+        {
+            QuestManager.instance.AddQuest(newQuest);
+        }
+        if (questToGive.statusQuest == QUEST_STATUS.COMPLETE)
+        {
+            QuestManager.instance.
+                ChangeQuestStatus(questToGive.nameQuest, QUEST_STATUS.COMPLETE);
+        }        
     }
 }

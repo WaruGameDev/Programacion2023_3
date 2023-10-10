@@ -45,10 +45,24 @@ public class QuestManager : MonoBehaviour
     }
     public void AddQuest(Quest newQuest)
     {
+        foreach(Quest q in quests)
+        {
+            if(q.nameQuest == newQuest.nameQuest)
+            {
+                return;
+            }
+        }
         quests.Add(newQuest);
     }
     public void AddQuest(string newQuest)
     {
+        foreach (Quest u in quests)
+        {
+            if (u.nameQuest == newQuest)
+            {
+                return;
+            }
+        }
         Quest q = new Quest();
         q.nameQuest = newQuest;
         q.statusQuest = QUEST_STATUS.ASSIGNED;
