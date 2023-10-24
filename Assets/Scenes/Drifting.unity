@@ -865,7 +865,7 @@ MonoBehaviour:
   drag: 0.95
   steerAngle: 25
   traction: 0.5
-  bodyTilt: 20
+  bodyTilt: 40
   carBody: {fileID: 5080339297298791712}
   moveForce: {x: 0, y: 0, z: 0}
 --- !u!1 &2051935875
